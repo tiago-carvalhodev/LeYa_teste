@@ -1,0 +1,22 @@
+[data-grid] {
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    gap: 3rem;
+    padding: 5rem;
+    align-self: center;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1025px) {
+    [data-grid] {
+        grid-template-columns: repeat(2, 400px);
+    }
+}
+
+@media (max-width: 850px) {
+    [data-grid] {
+        grid-template-columns: repeat(1, 200px);
+    }
+}

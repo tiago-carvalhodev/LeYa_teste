@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
+import Grid from './components/Grid/grid';
 
-function App() {
+const apiUrl = "https://bla.production.ms.leya.ninja/api/posts/";
+
+const App = () => {
+  //Criação das variaveis de estado onde vou guardar as informações
+  const [postData, setPostData] = useState([]);
+  let log = console.log;
+
+
+  // Função para chamar a API
+  const getData = async () => {
+    const response = await fetch(apiUrl);
+    const jsonData = await response.json();
+    setPostData(jsonData);
+  };
+
+  // Hook para realizar a chamda a API cada vez que for aberta a
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Grid props={postData}/>
     </div>
   );
 }
