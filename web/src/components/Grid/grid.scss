@@ -7,6 +7,10 @@
     justify-items: center;
     align-items: center;
     justify-content: center;
+    a {
+        text-decoration: none;
+        color: black;
+    }
 }
 
 @media (max-width: 1025px) {

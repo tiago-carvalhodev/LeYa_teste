@@ -16,6 +16,11 @@
           justify-content: center;
 }
 
+[data-grid] a {
+  text-decoration: none;
+  color: black;
+}
+
 @media (max-width: 1025px) {
   [data-grid] {
     -ms-grid-columns: (400px)[2];
