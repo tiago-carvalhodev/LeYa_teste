@@ -1,31 +1,22 @@
 import './App.css';
-import { useState, useEffect } from 'react';
 import Grid from './components/Grid/grid';
-
-const apiUrl = "https://bla.production.ms.leya.ninja/api/posts/";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './components/Home/home';
+import SinglePost from './components/SinglePost/single-post';
 
 const App = () => {
-  //Criação das variaveis de estado onde vou guardar as informações
-  const [postData, setPostData] = useState([]);
-  let log = console.log;
-
-
-  // Função para chamar a API
-  const getData = async () => {
-    const response = await fetch(apiUrl);
-    const jsonData = await response.json();
-    setPostData(jsonData);
-  };
-
-  // Hook para realizar a chamda a API cada vez que for aberta a
-  useEffect(() => {
-    getData();
-  }, []);
 
   return (
-    <div className='App'>
-      <Grid props={postData}/>
-    </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}>
+          </Route>
+          <Route path="/posts" element={<Grid />}>
+          </Route>
+          <Route path="/posts/:id" element={<SinglePost />}>
+          </Route>
+        </Routes>
+      </BrowserRouter>
   );
 }
 
